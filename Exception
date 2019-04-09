@@ -1,0 +1,124 @@
+// Exception.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include "pch.h"
+#include <iostream>
+#include <string>
+
+class Employee {
+private:
+	std::string name;
+	int number;
+	std::string date;
+
+public:
+	Employee()
+	{
+
+	}
+
+	Employee(std::string n, int num, std::string d)
+	{
+		try
+		{
+			name = n;
+			number = num;
+			date = d;
+
+			if (num < 0 || num > 9999)
+			{
+				throw "InvalidEmployeeNumber: invalid number, has to be between 0 and 9999. can include the boundries.\n";
+			}
+		}
+		catch (std::string exceptionString)
+		{
+			std::cout << exceptionString;
+		}
+	}
+	void setName(std::string na)
+	{
+		name = na;
+	}
+	void setNumber(int nu)
+	{
+		try
+		{
+			number = nu;
+			if (nu < 0 || nu > 9999)
+			{
+				throw "InvalidEmployeeNumber: invalid number, has to be between 0 and 9999. can include the boundries.\n";
+			}
+		}
+		catch(std::string exceptionString)
+		{
+			std::cout << exceptionString;
+		}
+	}
+	void setDate(std::string da)
+	{
+		date = da;
+	}
+	std::string getName()
+	{
+		return name;
+	}
+	int getNumber()
+	{
+		return number;
+	}
+	std::string getDate()
+	{
+		return date;
+	}
+
+};
+
+class ProductionWorker : Employee {
+private:
+	int shift;
+	double hourPay;
+public:
+	ProductionWorker(int s, double h)
+	{
+		try
+		{
+			shift = s;
+			hourPay = h;
+			if (s < 1 || s > 2)
+			{
+				throw "InvalidShift: invalid shift, has to be 1 or 2.\n";
+			}
+			if (h < 0)
+			{
+				throw "InvalidPayRate : invalid pay rate as it needs to be positive.\n";
+			}
+		}
+		catch(std::string exceptionString)
+		{
+			std::cout << exceptionString;
+		}
+	}
+	void setShift(int sh)
+	{
+		shift = sh;
+	}
+	void setHourPay(int ho)
+	{
+		hourPay = ho;
+	}
+	int getShift()
+	{
+		return shift;
+	}
+	double getHourPay()
+	{
+		return hourPay;
+	}
+};
+int main()
+{
+	Employee worker("Dave", 10322, "4/15/2004");
+	ProductionWorker workerH(4, 32.54);
+	ProductionWorker workerJack(1, -6.23);
+}
+
