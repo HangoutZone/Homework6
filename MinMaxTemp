@@ -1,0 +1,54 @@
+// MinMaxTemp.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+#include "pch.h"
+#include <iostream>
+
+template <typename T> 
+T max(T a, T b) {
+		if (a > b)
+		{
+			return a;
+		}
+		
+		if (b > a)
+		{
+			return b;
+		}		 
+}
+
+template <typename T>
+T min(T a, T b) {
+	if (a < b)
+	{
+		return a;
+	}
+
+	if (b < a)
+	{
+		return b;
+	}
+}
+int main()
+{
+	int f, g;
+	double t, r;
+	float p, n;
+
+	f = 2;
+	g = 3;
+	t = 4.32;
+	r = 3.32;
+	p = 2.132;
+	n = 3.324;
+
+	std::cout << "Maximum is: " << max(f, g);
+	std::cout << "\nMinimum is: " << min(f, g);
+
+	std::cout << "\nMaximum is: " << max(t, r);
+	std::cout << "\nMinimum is: " << min(t, r);
+
+	std::cout << "\nMaximum is: " << max(p, n);
+	std::cout << "\nMinimum is: " << min(p, n);
+	
+}
+
