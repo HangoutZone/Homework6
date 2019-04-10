@@ -1,0 +1,56 @@
+// PrimeNumberGen.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include "pch.h"
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+bool prime(int x)
+{
+	for (int i = x; i >= 2; i--)
+	{
+		if (x % i == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	std::cout << "please enter an integer greater than 1." << std::endl;
+	int x;
+	std::cin >> x;
+	
+	if (x <= 1)
+	{
+		std::cout << "not greater than 1." << std::endl;
+	}
+
+	std::vector<int> integers;
+	std::vector<int> primes;
+	if (x > 1)
+	{
+		for (int i = 0; i <= x; i++)
+		{
+			integers.push_back(i);
+		}
+
+		for (int i = 2; i < integers.size(); i++)
+		{
+			if (for_each(integers.begin(), integers.end(), prime))
+			{
+				primes.push_back(i);
+			}
+		}
+	}
+	
+	for (int i = 0; i < primes.size(); i++)
+	{
+		std::cout << primes[i] << std::endl;
+	}
+	return 0;
+	
+}
